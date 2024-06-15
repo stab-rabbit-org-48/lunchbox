@@ -12,7 +12,7 @@ const SignUp = () => {
 		<div className="accountBox">
 			<h1>LunchBox</h1>
 				<header className="header">
-					<img src='../assets/lunchboxlogosmall.png'/>
+					<img src={smallLogo}/>
 				</header>
 			<div className ='boxClass'> 
 				<form> 
