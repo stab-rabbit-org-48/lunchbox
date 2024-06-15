@@ -1,4 +1,5 @@
 const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 
@@ -6,6 +7,11 @@ module.exports = {
 // should the webpack starts bundling
 entry: "./src/index.js",
 mode: "development",
+plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    }),
+  ],
 module: {
 	rules: [
 	{
@@ -18,12 +24,29 @@ module: {
 		test: /\.css$/, //checks for .css files
 		use: ["style-loader", "css-loader"],
 	},
+	{
+		test: /\.html$/, // checks for .html files
+		use: ["html-loader"],
+	},
+	{
+		test: /\.(png|jpe?g|gif|svg)$/i, // checks for image files
+		type: 'asset/resource',
+		use: [
+			{
+				loader: 'file-loader',
+				options:{
+					name: '[name].[hash].[ext]',
+					outputPath: 'assets/images'
+				}
+			}
+		]
+	}
 	],
 },
 
 // Options for resolving module requests
 // extensions that are used
-resolve: { extensions: ["*", ".js", ".jsx"] },
+resolve: { extensions: [".*", ".js", ".jsx"] },
 
 // Output point is where webpack should
 // output the bundles and assets
