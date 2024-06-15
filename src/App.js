@@ -1,14 +1,14 @@
 import React from "react";
-import "./App.css";
+import "./src/App.js";
+import Login from './components/Login.jsx'
+
+
 const App = () => {
 return (
 	<div>
-	<h1 className="heading">GeeksForGeeks</h1>
-	<h4 className="sub-heading">
-		A computer science portal for geeks
-	</h4>
+		<Login />
 	</div>
-);
+	);
 };
 
 export default App;

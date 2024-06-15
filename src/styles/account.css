@@ -1,0 +1,25 @@
+/* stylings for App component */
+
+.accountBox{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+}
+.header {
+	display: block;
+	margin-bottom: 40px;
+}
+
+.boxClass{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+}
+
+.boxClass form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
