@@ -18,32 +18,36 @@ body {
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 .logo img {
-    height: 50px;
+    height: 150px;
     width: auto;
     margin-right: 120px;
-    margin-left: -200%;
+    margin-left: -150%;
 }
 
 .navBar {
     display: flex;
     align-items: center;
-    border: 2px solid #fff;
+    justify-content: center;
+    border: 5px solid red;
+    background-color: transparent;
     padding: 5px;
     border-radius: 5px;
-    background-color: #333;
-
+    margin-left: -10rem;
 }
 
 .navBarButtons {
     display: flex;
     flex-direction:flex-start;
+    justify-content: space-between;
     gap: 20px;
+    border-radius: 20px;
 }
 
 .navBarButtons button {
-    background-color: #333;
     color: #fff;
     border: 2px solid #fff;
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
@@ -61,4 +65,48 @@ body {
 .recipeSearch form {
     display: flex;
     align-items: center;
+}
+.recipeSearch input[type = 'text'] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.recipeSearch button {
+    background-color: #333;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+.recipeSearch button:hover {
+    background-color: #fff;
+    color: #333;
+    border-color: #333;
+}
+
+.recipeResults {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.recipeCard {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.recipeCard h2 {
+    margin-bottom: 10px;
+}
+
+.recipeCard img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
 }

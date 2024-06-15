@@ -5,10 +5,12 @@ import '../styles/Home.css';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-    //   const [query, setQuery] = useState('');
-    //   const [recipes, setRecipes] = useState(null);
-    //   const [error, setError] = useState(null);
-  // // fetches the recipe from the API
+
+      // const [query, setQuery] = useState('');
+      // const [recipes, setRecipes] = useState(null);
+      // const [error, setError] = useState(null);
+  
+      // // fetches the recipe from the API
   //     useEffect(() => {
   //     const getRecipes = async (event) => {
   //         try {
@@ -29,22 +31,30 @@ const Home = () => {
   //     setQuery(event.target.elements.query.value);
   // }
 
+
+    const [menu, setMenu] = useState("Home");
+
+
   return (
     // <>
-      <div className="home-header">
+      <><div className="home-header">
         <div className="logo">
           <img src={smallLogo} alt="logo" />
         </div>
         <nav className="navBar">
             {/* nav bar buttons */}
           <div className="navBarButtons">
-             <button onClick = 'nutritionRouter()' > Nutrition </button>
-            <button onClick = 'recipeRouter()'> Recipes </button>
-            <button onClick = 'TBDRouter()'> TBD </button>
-            <button onClick = 'accountRouter()'> Account </button>
+                <button onClick={()=>{setMenu("Nutrition")}}><Link style={{ textDecoration: 'none' }} to='/Nutrition'>Nutrition</Link>{menu==="Nutrition"?<hr/>:<></>}</button>
+                <button onClick={()=>{setMenu("Recipe")}}><Link style={{ textDecoration: 'none' }} to='/Recipe'>Recipe</Link>{menu==="Recipe"?<hr/>:<></>}</button>
+                <button onClick={()=>{setMenu("TBD")}}><Link style={{ textDecoration: 'none' }} to='/TBD'>TBD</Link>{menu==="TBDs"?<hr/>:<></>}</button>
+                <button onClick={()=>{setMenu("Account")}}><Link style={{ textDecoration: 'none' }} to='/Account'>Account</Link>{menu==="Account"?<hr/>:<></>}</button>
           </div>
         </nav>
       </div>
+
+      <body className = 'bodyContainer'>
+      </body>
+      </>
     //   {/* <div className="recipeSearch">
     //     <form onSubmit={handleSearch}>
     //       <input
