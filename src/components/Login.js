@@ -10,6 +10,8 @@ const Login = () => {
     <div className="accountBox">
       <header className="header">
         <img src={smallLogo} />
+        <h1>LunchBox</h1>
+        <h2>Log In</h2>
       </header>
       <div className="boxClass">
         <form>

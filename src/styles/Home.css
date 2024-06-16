@@ -1,115 +1,115 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
 .home-header {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #f8f8f8;
-    color: #333;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f8f8f8;
+  color: #333;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .logo img {
-    height: 50px;
-    width: auto;
+  height: 100px;
+  width: auto;
 }
 
 .navBar {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 20px;
 }
 
 .navBarButtons {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .navBarButtons button {
-    color: #333;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  color: #333;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 .navBarButtons button:hover {
-    background-color: #ddd;
-    color: #333;
-    border-color: #bbb;
+  background-color: #ddd;
+  color: #333;
+  border-color: #bbb;
 }
 
 .bodyContainer {
-    padding-top: 80px; /* Adjust based on header height */
-    margin: 20px;
+  padding-top: 80px; /* Adjust based on header height */
+  margin: 20px;
 }
 
 .recipeSearch form {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .recipeSearch input[type='text'] {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    flex: 1;
-    margin-right: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex: 1;
+  margin-right: 10px;
 }
 
 .recipeSearch button {
-    background-color: #333;
-    color: #fff;
-    border: 2px solid #fff;
-    padding: 10px 15px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  background-color: #333;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 .recipeSearch button:hover {
-    background-color: #fff;
-    color: #333;
-    border-color: #333;
+  background-color: #fff;
+  color: #333;
+  border-color: #333;
 }
 
 .recipeResults {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
 }
 
 .recipeCard {
-    background-color: #f0f0f0;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .recipeCard h2 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .recipeCard img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
 }
