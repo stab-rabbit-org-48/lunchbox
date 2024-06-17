@@ -9,6 +9,10 @@ html, body {
     background-color: #f8f8f8;
 }
 
+h2{
+    margin-bottom: -2px
+}
+
 /* Center .accountBox */
 .accountBox {
     display: flex;
@@ -19,6 +23,7 @@ html, body {
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    width: 240px;
 }
 
 /* Align header content in the center */
@@ -90,4 +95,78 @@ a {
 
 a:hover {
     color: #555;
+}
+
+
+
+/* Account.css */
+
+.account-page {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #f8f8f8;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar .logo img {
+    width: 100%;
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+.navBar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.navBar li {
+    margin: 20px 0;
+}
+
+.navBar a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px;
+    background-color: #fff;
+}
+
+.main-content h1 {
+    margin-bottom: 20px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-info .user-icon {
+    width: 250px;
+    height: 150px; 
+    border-radius: 50%; 
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-info p {
+    margin: 0;
+}
+
+.user-info strong {
+    font-weight: bold;
 }
