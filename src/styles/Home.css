@@ -9,10 +9,10 @@ body {
     flex-direction: row; /* Change this to row for horizontal layout */
     align-items: center;
     padding: 10px;
-    background-color: #f8f8f8;
+    background-color: white;
     color: #333;
     width: 100%;
-    height: 100px; /* Adjust height as needed */
+    height: 120px; /* Adjust height as needed */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
@@ -26,7 +26,7 @@ body {
   }
   
   .logo img {
-    height: 100px;
+    height: 120px;
     width: auto;
   }
   
@@ -45,17 +45,19 @@ body {
   }
   
   .navBarButtons button {
-    color: #333;
-    background-color: #f0f0f0;
+    color: #ffffff;
+    background-color: hsl(0, 76%, 56%);
     border: 1px solid #ccc;
-    font-size: 16px;
+    font-size: 20px;
     font-family: 'Roboto', sans-serif;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
     flex-grow: 1; /* Allow buttons to grow */
+    margin-top: 15px;
     max-width: 200px; /* Limit the maximum width of buttons */
+    height: 55px;
   }
   
   .navBarButtons button:hover {
@@ -65,7 +67,87 @@ body {
   }
   
   .bodyContainer {
-    margin-top: 100px; /* Align with the navigation bar height */
+    margin-top: 500px; /* Align with the navigation bar height */
+    width: 1000px;;
+    height: 100px;
     padding: 20px;
     flex: 1;
+  }
+
+  .main-elements-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    border: 1px solid black;
+    height: 700\px;
+    width: 1000px;
+    margin-top: -500px;
+
+  }
+
+  .quick-ingredients{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-rows: repeat(3, auto); /* 3 rows */
+    gap: 60px; /* Space between buttons */
+    flex: 1; /* Grow to fill available space */
+    padding: 100px; /* Padding inside the container */
+    border: 2px solid black;
+    margin-left: 30px;
+  }
+
+  .quick-ingredients-title {
+    grid-column: span 2; /* Span both columns */
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 20px;
+    margin-top: -50px;
+  }
+
+  .ingredient-button {
+    padding: 20px;
+    background-color: #5497ee;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    width: 170px;
+    /* box-shadow: 2px 5px 5px black ; */
+  }
+  
+  .ingredient-button:hover {
+    background-color: white;
+    color: #1a73e8;
+    border-color: #1a73e8;
+  }
+
+  .recent-recipes {
+    flex: 1; /* Grow to fill available space */
+    background-color: lightgreen;
+    border: 2px solid black;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
+  }
+  
+  .recent-recipes-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 20px;
+  }
+  
+  .recipes-list {
+    height: 495px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    overflow-y: auto;
   }

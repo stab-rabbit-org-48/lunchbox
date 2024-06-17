@@ -63,8 +63,20 @@ const Home = () => {
         </nav>
     </div>
     <div className='bodyContainer'>
-        {/* Home content here */}
-        <div className = 'quick-ingredient'>
+        <div className = 'main-elements-container'>
+            <div className = 'quick-ingredients'>
+            <div className = 'quick-ingredients-title'> Choose Your Protein</div>
+            <button className='ingredient-button'>Chicken</button>
+            <button className='ingredient-button'>Beef</button>
+            <button className='ingredient-button'>Turkey</button>
+            <button className='ingredient-button'>Fish</button>
+            <button className='ingredient-button'>Vegetarian</button>
+            <button className='ingredient-button'>Add New</button>
+            </div>
+            <div className='recent-recipes'>
+            <div className='recent-recipes-title'>Recent Recipes</div>
+            <div className='recipes-list'></div>
+          </div>
         </div>
     </div>
 </div>
