@@ -1,25 +1,28 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    display: flex;
   }
   
   .home-header {
     display: flex;
-    justify-content: flex-start;
+    flex-direction: row; /* Change this to row for horizontal layout */
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px;
     background-color: #f8f8f8;
     color: #333;
-    position: fixed;
     width: 100%;
+    height: 100px; /* Adjust height as needed */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
     top: 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    left: 0;
   }
   
   .logo {
     display: flex;
     align-items: center;
+    margin-right: 20px; /* Add margin to separate from navBar */
   }
   
   .logo img {
@@ -29,26 +32,30 @@ body {
   
   .navBar {
     display: flex;
+    flex-direction: row; /* Change this to row for horizontal layout */
     align-items: center;
-    justify-content: flex-start;
-    margin-left: 20px;
+    width: 100%;
   }
   
   .navBarButtons {
     display: flex;
-    gap: 10px;
+    flex-direction: row; /* Change this to row for horizontal layout */
+    gap: 20px;
+    width: 100%;
   }
   
   .navBarButtons button {
     color: #333;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'Roboto', sans-serif;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    flex-grow: 1; /* Allow buttons to grow */
+    max-width: 200px; /* Limit the maximum width of buttons */
   }
   
   .navBarButtons button:hover {
@@ -58,58 +65,7 @@ body {
   }
   
   .bodyContainer {
-    padding-top: 80px; /* Adjust based on header height */
-    margin: 20px;
-  }
-  
-  .recipeSearch form {
-    display: flex;
-    align-items: center;
-  }
-  
-  .recipeSearch input[type='text'] {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    margin-top: 100px; /* Align with the navigation bar height */
+    padding: 20px;
     flex: 1;
-    margin-right: 10px;
   }
-  
-  .recipeSearch button {
-    background-color: #333;
-    color: #fff;
-    border: 2px solid #fff;
-    padding: 10px 15px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-  }
-  
-  .recipeSearch button:hover {
-    background-color: #fff;
-    color: #333;
-border-color: #333;
-}
-
-.recipeResults {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-gap: 20px;
-}
-
-.recipeCard {
-background-color: #f0f0f0;
-padding: 20px;
-border-radius: 8px;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.recipeCard h2 {
-margin-bottom: 10px;
-}
-
-.recipeCard img {
-max-width: 100%;
-height: auto;
-border-radius: 5px;
-}
