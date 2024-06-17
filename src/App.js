@@ -1,32 +1,27 @@
 import React from 'react';
-// import "./src/App.js";
-import Login from './components/Login.js';
-import Home from './components/Home';
-import Signup from './components/SignUp.js';
-import Nutrition from './components/Nutrition.js';
-import Recipe from './components/Recipe.js';
-import TBD from './components/TBD.js';
-import Account from './components/Account';
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './components/Login';
+import Home from './components/Home';
+import SignUp from './components/SignUp';
+import Nutrition from './components/Nutrition';
+import Recipe from './components/Recipe';
+import TBD from './components/TBD';
+import Account from './components/Account';
 
 const App = () => {
   return (
-    <div>
-      {/* <BrowserRouter> */}
-      <Router>
-        <Routes>
-          <Route path="/Nutrition" element={<Nutrition />} />
-          <Route path="/Recipe" element={<Recipe />} />
-          <Route path="/TBD" element={<TBD />} />
-          <Route path="/Account" element={<Account />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Signup />} />
-        </Routes>
-      </Router>
-      {/* </BrowserRouter> */}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/Nutrition" element={<Nutrition />} />
+        <Route path="/Recipe" element={<Recipe />} />
+        <Route path="/TBD" element={<TBD />} />
+        <Route path="/Account" element={<Account />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<SignUp />} />
+      </Routes>
+    </Router>
   );
 };
-//
+
 export default App;

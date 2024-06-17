@@ -1,27 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import { fetchRecipes } from '../apiService';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import smallLogo from '../assets/lunchboxlogosmall.png';
-import '../styles/Home.css';
-import { Link } from 'react-router-dom';
+import '../styles/account.css';
 
-// </header>
 const Login = () => {
-  return (
-    <div className="accountBox">
-      <header className="header">
-        <img src={smallLogo} />
-        <h1>LunchBox</h1>
-        <h2>Log In</h2>
-      </header>
-      <div className="boxClass">
-        <form>
-          <input type="text" placeholder="username" className="inputBox" />
-          <input type="text" placeholder="password" className="inputBox" />
-          <button type="submit"> Login </button>
-        </form>
-      </div>
-    </div>
-  );
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Form submitted');
+        // Add your login logic here
+        navigate('/home');
+    };
+
+    return (
+        <div className="accountBox">
+            <header className="header">
+                <img src={smallLogo} alt="Lunchbox Logo" />
+                <h1>LunchBox</h1>
+                <h2>Log In</h2>
+            </header>
+            <div className="boxClass">
+                <form onSubmit={handleSubmit}>
+                    <input type="text" placeholder="username" className="inputBox" required />
+                    <input type="password" placeholder="password" className="inputBox" required />
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    );
 };
 
 export default Login;

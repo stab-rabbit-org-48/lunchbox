@@ -44,19 +44,19 @@ const Home = () => {
         <nav className="navBar">
             <div className="navBarButtons">
                 <button onClick={() => { setMenu("Nutrition") }}>
-                    <Link style={{ textDecoration: 'none' }} to='/Nutrition'>Nutrition</Link>
+                    <Link style={{ textDecoration: 'none', color: 'inherit' }} to='/Nutrition'>Nutrition</Link>
                     {menu === "Nutrition" ? <hr /> : <></>}
                 </button>
                 <button onClick={() => { setMenu("Recipe") }}>
-                    <Link style={{ textDecoration: 'none' }} to='/Recipe'>Recipe</Link>
+                    <Link style={{ textDecoration: 'none', color: 'inherit' }} to='/Recipe'>Recipe</Link>
                     {menu === "Recipe" ? <hr /> : <></>}
                 </button>
                 <button onClick={() => { setMenu("TBD") }}>
-                    <Link style={{ textDecoration: 'none' }} to='/TBD'>TBD</Link>
+                    <Link style={{ textDecoration: 'none', color: 'inherit' }} to='/TBD'>TBD</Link>
                     {menu === "TBD" ? <hr /> : <></>}
                 </button>
                 <button onClick={() => { setMenu("Account") }}>
-                    <Link style={{ textDecoration: 'none' }} to='/Account'>Account</Link>
+                    <Link style={{ textDecoration: 'none', color: 'inherit' }} to='/Account'>Account</Link>
                     {menu === "Account" ? <hr /> : <></>}
                 </button>
             </div>
@@ -64,6 +64,8 @@ const Home = () => {
     </div>
     <div className='bodyContainer'>
         {/* Home content here */}
+        <div className = 'quick-ingredient'>
+        </div>
     </div>
 </div>
   

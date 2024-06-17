@@ -9,6 +9,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
+      filename: 'index.html'
     }),
   ],
   module: {
@@ -47,5 +48,8 @@ module.exports = {
     path: path.resolve(__dirname, "dist/"),
     publicPath: "/",
     filename: "bundle.js",
+  },
+  devServer: {
+    historyApiFallback: true,
   },
 };

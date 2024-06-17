@@ -7,7 +7,7 @@ verify whether or not the session is still valid
 */
 
 sessionController.isLoggedIn = (req, res, next) => {
-// Finde the session in the database
+// Find the session in the database
     Session.findOne({ cookieId: req.cookie.ssid }), (err, session) => {
         if (err) {
             return next({

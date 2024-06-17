@@ -1,25 +1,49 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import smallLogo from '../assets/lunchboxlogosmall.png';
-import '../styles/account.css'; // Ensure this path is correct
+import '../styles/account.css';
 
 const SignUp = () => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        console.log('Navigating to login');
+        navigate('/login');
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Form submitted');
+        // Add your account creation logic here
+        handleClick();
+    };
+
     return (
         <div className="accountBox">
             <header className="header">
                 <img src={smallLogo} alt="Lunchbox Logo" />
                 <h1>LunchBox</h1>
             </header>
-            <div className='boxClass'> 
-                <form> 
-                    <input type='text' placeholder="username" className='inputBox'/>
-                    <input type='password' placeholder="password" className='inputBox'/>
-                    <button type='submit'>Create Account</button>
+            <div className="boxClass">
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        placeholder="username"
+                        className="inputBox"
+                        required
+                    />
+                    <input
+                        type="password"
+                        placeholder="password"
+                        className="inputBox"
+                        required
+                    />
+                    <button type="submit">Create Account</button>
                 </form>
-                <Link to="/login">Already have an account? Login</Link>
+                <button onClick={handleClick}>Already have an account? Login</button>
             </div>
         </div>
     );
-}
+};
 
 export default SignUp;
