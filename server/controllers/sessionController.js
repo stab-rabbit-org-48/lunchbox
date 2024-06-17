@@ -8,7 +8,7 @@ verify whether or not the session is still valid
 
 sessionController.isLoggedIn = (req, res, next) => {
 // Find the session in the database
-    Session.findOne({ cookieId: req.cookie.ssid }), (err, session) => {
+    Session.findOne({ cookieId: ssid }), (err, session) => {
         if (err) {
             return next({
                 log: 'Error occurred in sessionController.isLoggedIn',
@@ -27,7 +27,7 @@ sessionController.isLoggedIn = (req, res, next) => {
 
 
 sessionController.startSession = (req, res, next) => {
-    Session.create({ cookieId: res.locals.user }, (err, session) => {
+    Session.create({ cookieId: res.locals.user._id }, (err, session) => {
         if (err) {
             return next({
                 log: 'Error occurred in sessionController.startSession',

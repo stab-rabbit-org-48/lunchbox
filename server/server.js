@@ -22,14 +22,21 @@ mongoose.connection.once('open', () => {
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+//middleware to parse cookies
 app.use(cookieParser());
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '../dist')));
 
 // API routes
+// Once user creates an account, Cookie created
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../src/components/SignUp'))
+})
+
 app.post(
-  '/signup',
+  '/',
   userController.createUser,
   cookieController.setSSIDCookie,
   sessionController.startSession,
@@ -38,6 +45,12 @@ app.post(
   }
 );
 
+// Retrieve User's Login Input
+app.get('/login', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../src/components/Login'))
+})
+
+// after form submission pass response thru middleware to verify, set ssid cookie and start thes session
 app.post(
   '/login',
   userController.verifyUser,
@@ -48,9 +61,29 @@ app.post(
   }
 );
 
+//serve nutrition page when time button is clicked from home page
+app.get('/nutrition', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../src/components/Nutrition'))
+})
+
+//serve recipe page when time button is clicked from home page
+app.get('/recipe', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../src/components/Recipe'))
+})
+
+//serve timer page when time button is clicked from home page
+app.get('/timer', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../src/components/Timer'))
+})
+
+//serve account info page when account button is clicked from home page
+app.get('/account', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../src/components/Account'))
+})
+
 // Catch-all route to handle client-side routing
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../dist/index.html'));
+  res.sendFile(path.resolve(__dirname, '../public/index.html'));
 });
 
 // Unknown route handler

@@ -15,6 +15,7 @@ export const fetchRecipes = async (query) => {
   try {
 const response = await axios.get(API_URL, {
   params: {
+    type: 'public',
     q: query,
     app_id: APP_ID,
     app_key: APP_KEY,
