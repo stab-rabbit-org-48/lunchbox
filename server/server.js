@@ -3,21 +3,25 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const app = express();
+const dotenv = require('dotenv');
+const cors = require('cors');
+dotenv.config();
 
 const userController = require('./controllers/userController');
-const cookieController = require('./controllers/cookieController');
-const sessionController = require('./controllers/sessionController');
+// const cookieController = require('./controllers/cookieController');
+// const sessionController = require('./controllers/sessionController');
 
 const PORT = 3000;
 
 // Connect to MongoDB
-const dotenv = require('dotenv');
-dotenv.config();
+// const dotenv = require('dotenv');
+// dotenv.config();
 const PLOY_MONGO_URI = process.env.PLOY_MONGO_URI;
 mongoose.connect(PLOY_MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+console.log('process.env.PLOY_MONGO_URI -->' , process.env.PLOY_MONGO_URI)
 mongoose.connection.once('open', () => {
   console.log('Connected to Database');
 });
@@ -25,7 +29,7 @@ mongoose.connection.once('open', () => {
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+app.use(cors());
 //middleware to parse cookies
 app.use(cookieParser());
 
@@ -42,8 +46,8 @@ app.get('/', (req, res) => {
 app.post(
   '/',
   userController.createUser,
-  cookieController.setSSIDCookie,
-  sessionController.startSession,
+  // cookieController.setSSIDCookie,
+  // sessionController.startSession,
   (req, res) => {
     res.status(200).json(res.locals.user);
   }
@@ -58,8 +62,8 @@ app.get('/login', (req, res) => {
 app.post(
   '/login',
   userController.verifyUser,
-  cookieController.setSSIDCookie,
-  sessionController.startSession,
+  // cookieController.setSSIDCookie,
+  // sessionController.startSession,
   (req, res) => {
     res.status(200).json(res.locals.user);
   }
