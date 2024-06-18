@@ -1,13 +1,32 @@
 const User = require('../models/userModel');
+const bcrypt = require('bcrypt');
+
 const userController = {};
 
+// creating fixed!
 userController.createUser = async (req, res, next) => {
-    const {username, password} = req.body;
     try {
-        const newUser = await User.create({ username, password });
+        const {username, password} = req.body;
+        
+        const exitingUser = await User.findOne({ username });
+        if (exitingUser) {
+            return next({
+                log: 'Error in userController: username is already existed',
+                status: 400,
+                message: {
+                    err: 'Ann error occurred, username is already exited'
+                }
+            })
+        }
+        const hashedPassword = await bcrypt.hash(String(password), 12);
+        const newUser = await User.create({ username, password: hashedPassword  });
+
+        //const newUser = await User.create({ username, password });
         res.locals.user = newUser;
+        console.log('newUser -->' ,newUser);
         return next();
     }
+
     catch (err) {
         return next({
             log: `userController.createUser: Error: ${err}`,
