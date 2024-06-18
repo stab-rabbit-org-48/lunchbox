@@ -8,10 +8,13 @@ const userController = require('./controllers/userController');
 const cookieController = require('./controllers/cookieController');
 const sessionController = require('./controllers/sessionController');
 
-const PORT = 8080;
+const PORT = 3000;
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/LBdatabase', {
+const dotenv = require('dotenv');
+dotenv.config();
+const PLOY_MONGO_URI = process.env.PLOY_MONGO_URI;
+mongoose.connect(PLOY_MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -32,6 +35,7 @@ app.use(express.static(path.join(__dirname, '../dist')));
 // API routes
 // Once user creates an account, Cookie created
 app.get('/', (req, res) => {
+  console.log('HERE');
   res.sendFile(path.resolve(__dirname, '../src/components/SignUp'))
 })
 
