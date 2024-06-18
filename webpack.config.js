@@ -1,5 +1,9 @@
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const dotenv = require('dotenv').config({
+  path: path.resolve(__dirname, '.env')
+});
 
 module.exports = {
   // Entry point that indicates where
@@ -10,6 +14,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
       filename: 'index.html'
+    }),
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(dotenv.parsed)
     }),
   ],
   module: {
@@ -51,5 +58,10 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
+    proxy: [
+      {
+        context: ['/api'],
+        target: ['http://localhost:3000'],
+      }]
   },
 };
