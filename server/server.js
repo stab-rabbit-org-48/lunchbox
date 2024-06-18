@@ -4,27 +4,33 @@ const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const app = express();
 const dotenv = require('dotenv');
-const cors = require('cors');
 dotenv.config();
-
+const cors = require('cors');
 const userController = require('./controllers/userController');
-// const cookieController = require('./controllers/cookieController');
-// const sessionController = require('./controllers/sessionController');
+const cookieController = require('./controllers/cookieController');
+const sessionController = require('./controllers/sessionController');
 
-const PORT = 3000;
+//const PORT = 3000;
 
 // Connect to MongoDB
-// const dotenv = require('dotenv');
-// dotenv.config();
+
+// const PLOY_MONGO_URI = process.env.PLOY_MONGO_URI;
+// mongoose.connect(PLOY_MONGO_URI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
+// mongoose.connection.once('open', () => {
+//   console.log('Connected to Database');
+// });
+
+
+const PORT = process.env.PORT || 3000;
 const PLOY_MONGO_URI = process.env.PLOY_MONGO_URI;
-mongoose.connect(PLOY_MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-console.log('process.env.PLOY_MONGO_URI -->' , process.env.PLOY_MONGO_URI)
-mongoose.connection.once('open', () => {
-  console.log('Connected to Database');
-});
+
+mongoose.connect(PLOY_MONGO_URI)
+  .then(() => console.log('MongoDB connected...'))
+  .catch(err => console.log(err));
+
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -46,7 +52,7 @@ app.get('/', (req, res) => {
 app.post(
   '/',
   userController.createUser,
-  // cookieController.setSSIDCookie,
+  cookieController.setSSIDCookie ,
   // sessionController.startSession,
   (req, res) => {
     res.status(200).json(res.locals.user);
@@ -62,10 +68,11 @@ app.get('/login', (req, res) => {
 app.post(
   '/login',
   userController.verifyUser,
-  // cookieController.setSSIDCookie,
+  cookieController.setSSIDCookie,
   // sessionController.startSession,
   (req, res) => {
-    res.status(200).json(res.locals.user);
+    // check if the returning is in json format?
+    res.status(200).json({ message: "welcome back" });
   }
 );
 

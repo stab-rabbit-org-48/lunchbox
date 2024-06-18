@@ -23,14 +23,42 @@ const SignUp = () => {
         handleClick();
     };
 
-    axios.post('http://localhost:8080/signup', { username, password })
-        .then(response => {
-            console.log('Account created', response.data);
-            handleClick();
-        })
-        .catch(error => {
-            console.log('Error getting account info', error)
-        });
+    // axios.post('http://localhost:8080/signup', { username, password })
+    //     .then(response => {
+    //         console.log('Account created', response.data);
+    //         handleClick();
+    //     })
+    //     .catch(error => {
+    //         console.log('Error getting account info', error)
+    //     });
+
+    const handleSignup = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await fetch('http://localhost:3000' , {
+                headers: {
+                    'Content-type': 'application/json',
+                },
+                method: 'POST',
+                body: JSON.stringify({ username, password })
+            }) 
+            console.log('res -->' , response)
+            console.log('username, password -->' , { username, password })
+             // if the status is ok
+            if (response.status === 200) {
+                response.json()
+                // redirect to home page
+                navigate('/home')
+            } else {
+                // give an alert
+                alert('Signup Failed. Please Try again with different username.')
+            }
+
+        } catch (err) {
+            console.error('Error while signing up' , err);
+        }
+    }
 
     return (
         <div className="accountBox">
@@ -39,11 +67,12 @@ const SignUp = () => {
                 <h1>LunchBox</h1>
             </header>
             <div className="boxClass">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSignup}>
                     <input
                         type="text"
                         placeholder="username"
                         className="inputBox"
+                        name='username'
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         required
@@ -52,6 +81,7 @@ const SignUp = () => {
                         type="password"
                         placeholder="password"
                         className="inputBox"
+                        name='password'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
