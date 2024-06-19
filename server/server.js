@@ -44,31 +44,31 @@ app.use(express.static(path.join(__dirname, '../dist')));
 
 // API routes
 // Once user creates an account, Cookie created
-app.get('/', (req, res) => {
-  console.log('HERE');
-  res.sendFile(path.resolve(__dirname, '../src/components/SignUp'))
-})
+// app.get('/', (req, res) => {
+//   console.log('HERE');
+//   res.sendFile(path.resolve(__dirname, '../src/components/SignUp'))
+// })
 
 app.post(
-  '/',
+  '/api/signup',
   userController.createUser,
-  cookieController.setSSIDCookie ,
+  // cookieController.setSSIDCookie ,
   // sessionController.startSession,
   (req, res) => {
-    res.status(200).json(res.locals.user);
+    res.status(201).json({ message: "User created successfully" });
   }
 );
 
 // Retrieve User's Login Input
-app.get('/login', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../src/components/Login'))
-})
+// app.get('/login', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '../src/components/Login'))
+// })
 
 // after form submission pass response thru middleware to verify, set ssid cookie and start thes session
 app.post(
-  '/login',
+  '/api/login',
   userController.verifyUser,
-  cookieController.setSSIDCookie,
+  // cookieController.setSSIDCookie,
   // sessionController.startSession,
   (req, res) => {
     // check if the returning is in json format?
@@ -77,24 +77,24 @@ app.post(
 );
 
 //serve nutrition page when time button is clicked from home page
-app.get('/nutrition', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../src/components/Nutrition'))
-})
+// app.get('/nutrition', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '../src/components/Nutrition'))
+// })
 
-//serve recipe page when time button is clicked from home page
-app.get('/recipe', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../src/components/Recipe'))
-})
+// //serve recipe page when time button is clicked from home page
+// app.get('/recipe', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '../src/components/Recipe'))
+// })
 
-//serve timer page when time button is clicked from home page
-app.get('/timer', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../src/components/Timer'))
-})
+// //serve timer page when time button is clicked from home page
+// app.get('/timer', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '../src/components/Timer'))
+// })
 
-//serve account info page when account button is clicked from home page
-app.get('/account', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../src/components/Account'))
-})
+// //serve account info page when account button is clicked from home page
+// app.get('/account', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '../src/components/Account'))
+// })
 
 // Catch-all route to handle client-side routing
 app.get('*', (req, res) => {
