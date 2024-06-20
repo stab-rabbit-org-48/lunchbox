@@ -63,6 +63,11 @@ app.post(
   }
 );
 
+app.post('/api/favorites', favController.addFavorite, (req, res) => {
+  console.log('Added successfully');
+  res.status(200).json('Added new favorite');
+});
+
 // Once user creates an account, Cookie created
 // Route '/' will only be reached if the request does not match any static file
 app.get('/', (req, res) => {
@@ -70,8 +75,6 @@ app.get('/', (req, res) => {
   // res.sendFile(path.resolve(__dirname, '../src/components/SignUp'))
   res.sendStatus(400);
 });
-
-
 
 // app.post(
 //   '/',

@@ -46,14 +46,14 @@ const Home = () => {
     }
   };
   
-  const addToFavorites = async (calories, image, ingredients) => {
+  const addToFavorites = async (label, calories, image, ingredients) => {
     try {
       const response = await fetch('http://localhost:3000/api/favorites', {
         headers: {
           'Content-Type': 'application/json',
         },
         method: 'POST',
-        body: JSON.stringify({ calories, image, ingredients }),
+        body: JSON.stringify({ label, calories, image, ingredients }),
       });
     } catch (err) {
       console.error('Error adding to list', err);
@@ -165,6 +165,7 @@ const Home = () => {
                   <button
                     onClick={() =>
                       addToFavorites(
+                        recipe.recipe.label,
                         Math.round(recipe.recipe.calories),
                         recipe.recipe.image,
                         recipe.recipe.ingredients
