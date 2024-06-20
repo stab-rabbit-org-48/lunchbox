@@ -8,12 +8,10 @@ import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const navigate = useNavigate();
-
   const handleClick = () => {
     console.log('Navigating to recipe page');
     navigate('/recipe');
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted');
@@ -47,9 +45,23 @@ const Home = () => {
       setError(error.message);
     }
   };
+  
+  const addToFavorites = async (calories, image, ingredients) => {
+    try {
+      const response = await fetch('http://localhost:3000/api/favorites', {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+        body: JSON.stringify({ calories, image, ingredients }),
+      });
+    } catch (err) {
+      console.error('Error adding to list', err);
+      setError(true);
+    }
+  };
 
   const [menu, setMenu] = useState('Home');
-
   return (
     <>
       <div className='home-header'>
@@ -121,7 +133,7 @@ const Home = () => {
           </div>
         </nav>
       </div>
-      <div id='recipeSearchContainer'>
+      <div>
         <div className='recipeSearch'>
           <form onSubmit={handleSearch}>
             <input
@@ -139,8 +151,28 @@ const Home = () => {
               {recipes.map((recipe, index) => (
                 <div key={index} className='recipeCard'>
                   <h2>{recipe.recipe.label}</h2>
-                  <p>{recipe.recipe.source}</p>
+                  <p>Calories: {Math.round(recipe.recipe.calories)}</p>
+                  {/* <p>{recipe.recipe.source}</p> */}
                   <img src={recipe.recipe.image} alt={recipe.recipe.label} />
+                  <ul>
+                    {recipe.recipe.ingredients.map((ingredient, i) => (
+                      <li key={i}>
+                        {ingredient.text} - {ingredient.quantity}{' '}
+                        {ingredient.measure} of {ingredient.food}
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    onClick={() =>
+                      addToFavorites(
+                        Math.round(recipe.recipe.calories),
+                        recipe.recipe.image,
+                        recipe.recipe.ingredients
+                      )
+                    }
+                  >
+                    Add to favorite lists
+                  </button>
                 </div>
               ))}
             </div>
@@ -207,7 +239,7 @@ const Home = () => {
                       Smoked Wagyu Beef Shank
                     </div>
                     <div className='recent-recipe-nutrition'>
-                      Cal: 918 Protein: 35g Carb: 0g Fat: 631g
+                      Cal: 918 Protein: 385g Carb: 0g Fat: 631g
                     </div>
                     <div className='recent-recipe-ingred'>
                       Beef Shank, Beef Tallow, Beef Broth, Red Wine...
@@ -222,5 +254,4 @@ const Home = () => {
     </>
   );
 };
-
 export default Home;
