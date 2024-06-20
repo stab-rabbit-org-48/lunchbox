@@ -34,6 +34,7 @@ userController.createUser = async (req, res, next) => {
 userController.verifyUser = async (req, res, next) => {
     //extract username and password from req.body
    try {
+        console.log('VERIFYING USER')
         const { username, password } = req.body;
         //find user in the database by username
         const user = await User.findOne({ username });

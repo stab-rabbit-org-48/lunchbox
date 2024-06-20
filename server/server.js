@@ -57,19 +57,6 @@ app.post('/api/signup',
     res.status(200).json({'message': 'hello'});
   });
 
-  
-
-backend
-
-
-
-client
-
-'/api/login/'
-{
-  username,
-  password
-}
 
 
 
