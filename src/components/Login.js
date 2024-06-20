@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import smallLogo from '../assets/lunchboxlogosmall.png';
 import transparentLogo from '../assets/logotransparent.png';
-import '../styles/account.css';
+import '../styles/account.scss';
 
 // auth imports
 import { useAuth } from '../hooks/AuthProvider';

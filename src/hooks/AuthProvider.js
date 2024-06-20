@@ -36,6 +36,7 @@ const AuthProvider = ({ children }) => {
             } else {
                 const parsed = await response.json();
                 // change app state
+                console.log('parsed:', parsed);
                 setUsername(parsed.username);
                 navigate('/home');
             }

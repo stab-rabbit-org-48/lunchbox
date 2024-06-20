@@ -47,7 +47,7 @@ app.post(
   cookieController.setSSIDCookie,
   (req, res) => {
   console.log('POST /api/login');
-  res.status(200).json({'message': 'logged in!'});
+  res.status(200).json({ username: res.locals.user.username });
 })
 
 // sign up logic
@@ -58,7 +58,7 @@ app.post(
   // sessionController.startSession,
   (req, res) => {
     console.log('POST /api/signup');
-    res.status(200).json({'message': 'hello'});
+    res.status(200).json({ username: res.locals.user.username });
   });
 
 
