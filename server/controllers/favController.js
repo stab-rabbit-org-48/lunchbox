@@ -6,7 +6,7 @@ const favController = {};
 
 favController.addFavorite = async (req, res, next) => {
     try {
-        const { username, password, label, calories, image, ingredients } = req.body;
+        const { label, calories, image, ingredients } = req.body;
 
         // Find the user by username
         // const user = await User.findOne({ username });
@@ -22,7 +22,7 @@ favController.addFavorite = async (req, res, next) => {
 
         // If user is authenticated, add the favorite recipe
         const favorite = new Favorite({
-            userId: user._id,
+           // userId: user._id,
             label,
             calories,
             image,

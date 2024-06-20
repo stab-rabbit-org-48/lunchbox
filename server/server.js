@@ -4,16 +4,27 @@ const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const app = express();
 const dotenv = require('dotenv');
-const cors = require('cors');
 dotenv.config();
-
+const cors = require('cors');
 const userController = require('./controllers/userController');
 const cookieController = require('./controllers/cookieController');
 // const sessionController = require('./controllers/sessionController');
-
-const PORT = 3000;
+const favController = require('./controllers/favController');
+//const PORT = 3000;
 
 // Connect to MongoDB
+
+// const PLOY_MONGO_URI = process.env.PLOY_MONGO_URI;
+// mongoose.connect(PLOY_MONGO_URI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
+// mongoose.connection.once('open', () => {
+//   console.log('Connected to Database');
+// });
+
+
+const PORT = process.env.PORT || 3000;
 const PLOY_MONGO_URI = process.env.PLOY_MONGO_URI;
 mongoose.connect(PLOY_MONGO_URI, {
   useNewUrlParser: true,
@@ -54,6 +65,7 @@ app.post(
 // sign up logic
 app.post(
   '/api/signup',
+  '/api/signup',
   userController.createUser,
   cookieController.setSSIDCookie,
   // sessionController.startSession,
@@ -85,24 +97,38 @@ app.get('/', (req, res) => {
 //     res.status(200).json(res.locals.user);
 //   }
 // );
+    res.status(201).json({ message: "User created successfully" });
+  }
+);
 
 // Retrieve User's Login Input
-// app.get('/login', (req, res) => {
+// // app.get('/login', (req, res) => {
 //   console.log('logging in')
-//   res.sendFile(path.resolve(__dirname, '../src/components/Login.js'))
-// })
+// //   res.sendFile(path.resolve(__dirname, '../src/components/Login.js'))
+// // })
 
 // after form submission pass response thru middleware to verify, set ssid cookie and start thes session
 // app.post(
-//   '/login',
+//   '/api/login',
 //   userController.verifyUser,
 //   cookieController.setSSIDCookie,
 //   // sessionController.startSession,
 //   (req, res) => {
-//     res.status(200).json(res.locals.user);
+//     // check if the returning is in json format?
+    res.status(200).json({ message: "welcome back" });
 //   }
 // );
 
+// add into the favlist //POST
+app.post('/api/favlist', favController.addFavorite, (req, res) => {
+  res.status(200).json({ favorite: res.locals.favList });
+});
+
+
+// get the fav list // GET
+// app.get('/api/favlist' , userController.verifyUser , favController.getFavorite , (req , res) => {
+//   res.status(200).json({ favList: res.locals.renderFavList });
+// })
 // //serve nutrition page when time button is clicked from home page
 // app.get('/nutrition', (req, res) => {
 //   res.sendFile(path.resolve(__dirname, '../src/components/Nutrition'))
