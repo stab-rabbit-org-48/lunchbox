@@ -1,0 +1,155 @@
+@import 'global';
+
+// h2 {
+//   margin-bottom: -2px;
+// }
+
+// /* Center .accountBox */
+// .accountBox {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   padding: 20px;
+//   background-color: white;
+//   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+//   border-radius: 8px;
+//   width: 240px;
+// }
+
+// /* Align header content in the center */
+// .header {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   margin-bottom: 20px;
+
+//   img {
+//     height: 180px;
+//     width: 165px;
+//     margin-bottom: -20px;
+//   }
+// }
+
+// /* Center form content */
+// .boxClass {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   width: 100%;
+
+//   form {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 10px;
+//     width: 100%;
+//     align-items: center;
+//   }
+// }
+
+// .inputBox {
+//   padding: 10px;
+//   font-size: 16px;
+//   border: 1px solid #ccc;
+//   border-radius: 5px;
+//   width: 100%;
+//   margin-bottom: 10px;
+// }
+
+// /* Button styles */
+// button {
+//   padding: 10px 15px;
+//   font-size: 16px;
+//   border: none;
+//   border-radius: 5px;
+//   background-color: #333;
+//   color: #fff;
+//   cursor: pointer;
+//   transition: background-color 0.3s, color 0.3s;
+//   margin-bottom: 10px;
+//   width: 100%;
+//   max-width: 300px;
+// }
+
+// /* Link styles */
+// a {
+//   margin-top: 20px;
+//   text-decoration: none;
+//   color: #333;
+//   transition: color 0.3s;
+// }
+
+/* Account.css */
+.account-page {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.sidebar {
+  margin-top: 90px;
+  width: 20%;
+  background-color: #f8f8f8;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+
+  .logo img {
+    width: 100%;
+    max-width: 150px;
+    margin-bottom: 20px;
+  }
+}
+
+.navBar {
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin: 20px 0;
+
+      a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px;
+  background-color: #fff;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  .user-icon {
+    width: 250px;
+    height: 150px;
+    border-radius: 50%;
+  }
+
+  .user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+}

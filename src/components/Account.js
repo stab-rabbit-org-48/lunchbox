@@ -3,7 +3,7 @@ import { fetchRecipes } from '../apiService';
 // import smallLogo from '../assets/../assets/logotransparent.png';
 import transparentLogo from '../assets/logotransparent.png'
 import userIcon from '../assets/user-icon.png'
-import '../styles/account.css';
+import '../styles/account.scss';
 import { Link } from 'react-router-dom';
 
 const Account = () => {
