@@ -8,18 +8,25 @@ import Recipe from './components/Recipe';
 import Timer from './components/Timer';
 import Account from './components/Account';
 
+import AuthProvider from './hooks/AuthProvider';
+import PrivateRoutes from './utils/PrivateRoutes';
+
 const App = () => {
   return (
     <Router>
-      <Routes>
-        <Route path='/Nutrition' element={<Nutrition />} />
-        <Route path='/Recipe' element={<Recipe />} />
-        <Route path='/Timer' element={<Timer />} />
-        <Route path='/Account' element={<Account />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/home' element={<Home />} />
-        <Route path='/' element={<SignUp />} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<SignUp />} />
+          <Route element={<PrivateRoutes />}>
+            <Route path="/Nutrition" element={<Nutrition />} />
+            <Route path="/Recipe" element={<Recipe />} />
+            <Route path="/Timer" element={<Timer />} />
+            <Route path="/Account" element={<Account />} />
+            <Route path="/home" element={<Home />} />
+          </Route>
+        </Routes>
+      </AuthProvider>
     </Router>
   );
 };
