@@ -6,9 +6,14 @@ import userIcon from '../assets/user-icon.png'
 import '../styles/account.css';
 import { Link } from 'react-router-dom';
 
+// auth import
+import { useAuth } from '../hooks/AuthProvider';
+
 const Account = () => {
 
     const [menu, setMenu] = useState("Account");
+
+    const { username, logOut} = useAuth();
 
     return (
         <div>
@@ -49,7 +54,8 @@ const Account = () => {
                 <nav className="navBar">
                     <ul>
                         <li><Link to="/account">Account Details</Link></li>
-                        <li><Link to="/">Logout</Link></li>
+                        {/* <li><Link to="/">Logout</Link></li> */}
+                        <li onClick={() => logOut()}>Logout</li>
                     </ul>
                 </nav>
             </div>
@@ -57,9 +63,9 @@ const Account = () => {
                 <h1>Account Information</h1>
                 <div className="user-info">
                     <img src={userIcon} alt="User Icon" className="user-icon" />
-                    <p><strong>Username:</strong> John Smith</p>
-                    <p><strong>Email:</strong> john.smith@example.com</p>
-                    <p><strong>Birthday:</strong> January 1, 1990</p>
+                    <p><strong>Username: </strong>{username}</p>
+                    <p><strong>Email: </strong>john.smith@example.com</p>
+                    <p><strong>Birthday: </strong>January 1, 1990</p>
                 </div>
             </div>
         </div>
