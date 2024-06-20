@@ -7,9 +7,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 const cors = require('cors');
 const userController = require('./controllers/userController');
-const cookieController = require('./controllers/cookieController');
-const sessionController = require('./controllers/sessionController');
-
+// const cookieController = require('./controllers/cookieController');
+// const sessionController = require('./controllers/sessionController');
+const favController = require('./controllers/favController');
 //const PORT = 3000;
 
 // Connect to MongoDB
@@ -76,24 +76,15 @@ app.post(
   }
 );
 
-//serve nutrition page when time button is clicked from home page
-// app.get('/nutrition', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, '../src/components/Nutrition'))
-// })
+// add into the favlist //POST
+app.post('/api/favlist', favController.addFavorite, (req, res) => {
+  res.status(200).json({ favorite: res.locals.favList });
+});
 
-// //serve recipe page when time button is clicked from home page
-// app.get('/recipe', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, '../src/components/Recipe'))
-// })
 
-// //serve timer page when time button is clicked from home page
-// app.get('/timer', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, '../src/components/Timer'))
-// })
-
-// //serve account info page when account button is clicked from home page
-// app.get('/account', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, '../src/components/Account'))
+// get the fav list // GET
+// app.get('/api/favlist' , userController.verifyUser , favController.getFavorite , (req , res) => {
+//   res.status(200).json({ favList: res.locals.renderFavList });
 // })
 
 // Catch-all route to handle client-side routing
