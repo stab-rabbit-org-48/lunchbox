@@ -1,4 +1,4 @@
-import React , { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import smallLogo from '../assets/lunchboxlogosmall.png';
 import transparentLogo from '../assets/logotransparent.png';
@@ -66,9 +66,9 @@ const Login = () => {
 
 
   return (
-    <div className="accountBox">
-      <header className="header">
-        <img src={transparentLogo} alt="Lunchbox Logo" />
+    <div className='accountBox'>
+      <header className='header'>
+        <img src={transparentLogo} alt='Lunchbox Logo' />
         <h1>LunchBox</h1>
         <h2>Log In</h2>
       </header>
@@ -93,7 +93,7 @@ const Login = () => {
             // onChange={(e) => setPassword(e.target.value)}
             onChange={handleInput}
           />
-          <button type="submit">Login</button>
+          <button type='submit'>Login</button>
         </form>
       </div>
     </div>

@@ -15,7 +15,7 @@ cookieController.setSSIDCookie = (req, res, next) => {
     })
     res.cookie('test', 'value', {
         sameSite: 'None',
-        secure: false
+        secure: false,
     })
     return next();
 }

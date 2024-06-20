@@ -21,17 +21,19 @@ mongoose.connect(PLOY_MONGO_URI, {
 });
 // console.log('process.env.PLOY_MONGO_URI -->' , process.env.PLOY_MONGO_URI)
 const db = mongoose.connection;
-db.on('error', err => console.log('MongoDB connection error:', err));
+db.on('error', (err) => console.log('MongoDB connection error:', err));
 db.once('open', () => console.log('Connected to Database'));
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors({
-  origin: 'http://localhost:8080',  // front-end URL 
-  credentials: true,  // allow cookies to be sent
-}));
-app.use(cookieParser());  //middleware to parse cookies
+app.use(
+  cors({
+    origin: 'http://localhost:8080', // front-end URL
+    credentials: true, // allow cookies to be sent
+  })
+);
+app.use(cookieParser()); //middleware to parse cookies
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '../dist')));
@@ -39,30 +41,25 @@ app.use(express.static(path.join(__dirname, '../dist')));
 // API routes
 
 // login logic
-app.post('/api/login',
+app.post(
+  '/api/login',
   userController.verifyUser,
   cookieController.setSSIDCookie,
   (req, res) => {
   console.log('POST /api/login');
-  res.status(200).json({ username: res.locals.user.username });
+  res.status(200).json({'message': 'logged in!'});
 })
 
 // sign up logic
-app.post('/api/signup',
+app.post(
+  '/api/signup',
   userController.createUser,
   cookieController.setSSIDCookie,
   // sessionController.startSession,
   (req, res) => {
     console.log('POST /api/signup');
-    res.status(200).json({ username: res.locals.user.username });
+    res.status(200).json({'message': 'hello'});
   });
-
-
-
-
-
-
-
 
 
 
@@ -155,5 +152,5 @@ const server = app.listen(PORT, () => {
 module.exports = {
   app,
   server,
-  db
+  db,
 };
