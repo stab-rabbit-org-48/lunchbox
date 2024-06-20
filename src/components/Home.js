@@ -45,7 +45,7 @@ const Home = () => {
       setError(error.message);
     }
   };
-  
+
   const addToFavorites = async (label, calories, image, ingredients) => {
     try {
       const response = await fetch('http://localhost:3000/api/favorites', {
@@ -55,6 +55,8 @@ const Home = () => {
         method: 'POST',
         body: JSON.stringify({ label, calories, image, ingredients }),
       });
+      console.log('res --> ', response.json());
+      alert('Added to favorites list');
     } catch (err) {
       console.error('Error adding to list', err);
       setError(true);

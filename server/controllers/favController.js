@@ -5,40 +5,46 @@ const bcrypt = require('bcrypt');
 const favController = {};
 
 favController.addFavorite = async (req, res, next) => {
-    try {
-        const { label, calories, image, ingredients } = req.body;
+  try {
+    const { label, calories, image, ingredients } = req.body;
 
-        // Find the user by username
-        // const user = await User.findOne({ username });
-        // if (!user) {
-        //     return res.status(400).json({ message: 'Invalid username or password' });
-        // }
+    // Find the user by username
+    // const user = await User.findOne({ username });
+    // if (!user) {
+    //     return res.status(400).json({ message: 'Invalid username or password' });
+    // }
 
-        // // Check if the password is correct
-        // const isMatch = await bcrypt.compare(password, user.password);
-        // if (!isMatch) {
-        //     return res.status(400).json({ message: 'Invalid username or password' });
-        // }
+    // // Check if the password is correct
+    // const isMatch = await bcrypt.compare(password, user.password);
+    // if (!isMatch) {
+    //     return res.status(400).json({ message: 'Invalid username or password' });
+    // }
 
-        // If user is authenticated, add the favorite recipe
-        const favorite = new Favorite({
-           // userId: user._id,
-            label,
-            calories,
-            image,
-            ingredients
-        });
+    // If user is authenticated, add the favorite recipe
+    // const favorite = new Favorite({
+    //    // userId: user._id,
+    //     label,
+    //     calories,
+    //     image,
+    //     ingredients
+    // });
+    const newFavorite = await Favorite.create({
+      label: label,
+      calories: calories,
+      image: image,
+      ingredients: ingredients,
+    });
+    //await favorite.save();
 
-        await favorite.save();
-        res.locals.favList = favorite;
-        return next();
-    } catch (err) {
-        return next({
-            log: `Error in favController.addFavorite: ${err.message}`,
-            status: 400,
-            message: { err: 'Error while adding to favorite list' }
-        });
-    }
+    res.locals.favList = newFavorite;
+    return next();
+  } catch (err) {
+    return next({
+      log: `Error in favController.addFavorite: ${err.message}`,
+      status: 400,
+      message: { err: 'Error while adding to favorite list' },
+    });
+  }
 };
 
 // favController.getFavorite = async (req, res) => {

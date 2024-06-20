@@ -23,7 +23,6 @@ const favController = require('./controllers/favController');
 //   console.log('Connected to Database');
 // });
 
-
 const PORT = process.env.PORT || 3000;
 const PLOY_MONGO_URI = process.env.PLOY_MONGO_URI;
 mongoose.connect(PLOY_MONGO_URI, {
@@ -55,7 +54,7 @@ app.use(express.static(path.join(__dirname, '../dist')));
 app.post(
   '/api/login',
   userController.verifyUser,
-  cookieController.setSSIDCookie,
+  // cookieController.setSSIDCookie,
   (req, res) => {
     console.log('POST /api/login');
     res.status(200).json({ message: 'logged in!' });
@@ -65,9 +64,8 @@ app.post(
 // sign up logic
 app.post(
   '/api/signup',
-  '/api/signup',
   userController.createUser,
-  cookieController.setSSIDCookie,
+  // cookieController.setSSIDCookie,
   // sessionController.startSession,
   (req, res) => {
     console.log('POST /api/signup');
@@ -77,7 +75,7 @@ app.post(
 
 app.post('/api/favorites', favController.addFavorite, (req, res) => {
   console.log('Added successfully');
-  res.status(200).json('Added new favorite');
+  res.status(200).json({ favorite: res.locals.favList });
 });
 
 // Once user creates an account, Cookie created
@@ -97,9 +95,9 @@ app.get('/', (req, res) => {
 //     res.status(200).json(res.locals.user);
 //   }
 // );
-    res.status(201).json({ message: "User created successfully" });
-  }
-);
+//     res.status(201).json({ message: "User created successfully" });
+//   }
+// );
 
 // Retrieve User's Login Input
 // // app.get('/login', (req, res) => {
@@ -115,15 +113,14 @@ app.get('/', (req, res) => {
 //   // sessionController.startSession,
 //   (req, res) => {
 //     // check if the returning is in json format?
-    res.status(200).json({ message: "welcome back" });
+// res.status(200).json({ message: "welcome back" });
 //   }
 // );
 
 // add into the favlist //POST
-app.post('/api/favlist', favController.addFavorite, (req, res) => {
-  res.status(200).json({ favorite: res.locals.favList });
-});
-
+// app.post('/api/favlist', favController.addFavorite, (req, res) => {
+//   res.status(200).json({ favorite: res.locals.favList });
+// });
 
 // get the fav list // GET
 // app.get('/api/favlist' , userController.verifyUser , favController.getFavorite , (req , res) => {

@@ -17,7 +17,7 @@ const ingredientSchema = new Schema({
 });
 
 const favSchema = new Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  // userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   label: { type: String, required: true },
   calories: { type: Number, required: true },
   image: { type: String, required: true },
