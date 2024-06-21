@@ -1,5 +1,5 @@
 // Importing "User" to get Access
-const User = require("../models/userModel");
+const User = require('../models/userModel');
 const cookieController = {};
 
 // Set cookie with a randome number
