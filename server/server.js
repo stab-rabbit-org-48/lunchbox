@@ -54,30 +54,24 @@ app.use(express.static(path.join(__dirname, '../dist')));
 app.post(
   '/api/login',
   userController.verifyUser,
-  // cookieController.setSSIDCookie,
+  cookieController.setSSIDCookie,
   (req, res) => {
-  console.log('POST /api/login');
-  res.status(200).json({ username: res.locals.user.username });
-})
+    console.log('POST /api/login');
+    res.status(200).json({ username: res.locals.user.username });
+  }
+);
 
 // sign up logic
 app.post(
   '/api/signup',
   userController.createUser,
-  // cookieController.setSSIDCookie,
+  cookieController.setSSIDCookie,
   // sessionController.startSession,
   (req, res) => {
     console.log('POST /api/signup');
     res.status(200).json({ username: res.locals.user.username });
-  });
-
-
-
-
-
-
-
-
+  }
+);
 
 app.post('/api/favorites', favController.addFavorite, (req, res) => {
   console.log('Added successfully');

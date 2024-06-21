@@ -30,66 +30,62 @@ userController.createUser = async (req, res, next) => {
   }
 };
 
-// login 
+// login
 userController.verifyUser = async (req, res, next) => {
-    //extract username and password from req.body
-   try {
-        console.log('VERIFYING USER')
-        const { username, password } = req.body;
-        //find user in the database by username
-        const user = await User.findOne({ username });
-        //if user is found and passwords match
-        if (!user) {
-            // res.locals.user = user;
-            // return next();
-             return next({
-                //If the password did not match, return log
-                log: 'Invalid username or password',
-                status: 400,
-                message: {
-                    err: 'An error occurred while verifying username and password'
-                }
-            });
-            
-        }
-        
-        console.log('user -->', user);
-        console.log('password -->', password);
-        console.log('before hashing -->' , password === user.password);
-
-        const isPasswordValid = await bcrypt.compare(password, user.password);
-        console.log('isPasswordValid--->' , isPasswordValid)
-
-        if (!isPasswordValid) {
-            return next({
-                log: 'Error in userController.verifying: invalid password',
-                status: 400,
-                message: {
-                    err: 'An error occurred, Invalid password'
-                }
-            });
-        } 
-
-        res.locals.verifyUser = user;
-        return next();
-
+  //extract username and password from req.body
+  try {
+    console.log('VERIFYING USER');
+    const { username, password } = req.body;
+    //find user in the database by username
+    const user = await User.findOne({ username });
+    //if user is found and passwords match
+    if (!user) {
+      // res.locals.user = user;
+      // return next();
+      return next({
+        //If the password did not match, return log
+        log: 'Invalid username or password',
+        status: 400,
+        message: {
+          err: 'An error occurred while verifying username and password',
+        },
+      });
     }
 
+    console.log('user -->', user);
+    console.log('password -->', password);
+    console.log('before hashing -->', password === user.password);
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    console.log('isPasswordValid--->', isPasswordValid);
+
+    if (!isPasswordValid) {
+      return next({
+        log: 'Error in userController.verifying: invalid password',
+        status: 400,
+        message: {
+          err: 'An error occurred, Invalid password',
+        },
+      });
+    }
+
+    res.locals.user = user;
+    return next();
+  } catch (err) {
     //global error handler
-    catch (err) {
-        return next({
-            log: `Error in userController.verifyUser: ${err.message}`,
-            status: 500,
-            message: { err: 'Error verifying user' }
-        });
-    }
+    return next({
+      log: `Error in userController.verifyUser: ${err.message}`,
+      status: 500,
+      message: { err: 'Error verifying user' },
+    });
+  }
 };
 
 userController.addToUserFavorites = async (req, res, next) => {
   //destructure the request
   const { calories, image, ingredients } = req.body;
   //add to model from Favorites schema
-    
+
   //
 };
 
